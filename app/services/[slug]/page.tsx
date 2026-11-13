@@ -12,6 +12,12 @@ import {
   HelpCircle,
 } from 'lucide-react';
 import LuxuryImage from '@/components/ui/LuxuryImage';
+import {
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+  ImageMaskReveal,
+} from '@/components/ui/MotionPrimitives';
 import { SERVICES_DATA, SPECIALISTS_DATA, BRAND_INFO } from '@/lib/elora-data';
 
 export async function generateStaticParams() {
@@ -72,7 +78,7 @@ export default async function ServiceDetailPage({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-            <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
+            <RevealOnScroll className="lg:col-span-7 flex flex-col justify-between space-y-8">
               <div className="space-y-4">
                 <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-[#C7A77B]">
                   <span>{service.category} Atelier</span>
@@ -116,22 +122,22 @@ export default async function ServiceDetailPage({
 
                 <Link
                   href={`/book?service=${service.id}`}
-                  className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap shrink-0"
+                  className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap shrink-0"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>Book This Service</span>
                 </Link>
               </div>
-            </div>
+            </RevealOnScroll>
 
-            <div className="lg:col-span-5 relative min-h-[380px] lg:h-full border border-[#C7A77B]/30">
+            <ImageMaskReveal delay={0.12} className="lg:col-span-5 relative min-h-[380px] lg:h-full border border-[#C7A77B]/30">
               <LuxuryImage
                 src={service.image}
                 alt={service.name}
                 priority
                 className="object-cover"
               />
-            </div>
+            </ImageMaskReveal>
           </div>
         </div>
       </section>
@@ -140,7 +146,7 @@ export default async function ServiceDetailPage({
       <section className="py-20 lg:py-28 px-5 sm:px-8 max-w-[1360px] mx-auto space-y-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Benefits */}
-          <div className="lg:col-span-6 border border-[#171512]/15 p-8 sm:p-10 bg-[#F3EDE4] space-y-6">
+          <RevealOnScroll className="lg:col-span-6 border border-[#171512]/15 p-8 sm:p-10 bg-[#F3EDE4] space-y-6">
             <div className="flex items-center gap-2.5 text-xs uppercase tracking-[0.2em] text-[#C7A77B] font-medium">
               <Sparkles className="w-4 h-4" />
               <span>Key Ritual Benefits</span>
@@ -156,10 +162,10 @@ export default async function ServiceDetailPage({
                 </li>
               ))}
             </ul>
-          </div>
+          </RevealOnScroll>
 
           {/* What is Included */}
-          <div className="lg:col-span-6 border border-[#171512]/15 p-8 sm:p-10 bg-[#171512] text-[#F3EDE4] space-y-6">
+          <RevealOnScroll delay={0.12} className="lg:col-span-6 border border-[#171512]/15 p-8 sm:p-10 bg-[#171512] text-[#F3EDE4] space-y-6">
             <div className="flex items-center gap-2.5 text-xs uppercase tracking-[0.2em] text-[#C7A77B]">
               <Clock className="w-4 h-4" />
               <span>Step-by-Step Choreography</span>
@@ -177,11 +183,11 @@ export default async function ServiceDetailPage({
                 </li>
               ))}
             </ol>
-          </div>
+          </RevealOnScroll>
         </div>
 
         {/* Before / After Transformation Showcase */}
-        <div className="border border-[#171512]/15 p-8 sm:p-12 bg-[#171512]/[0.03]">
+        <RevealOnScroll className="border border-[#171512]/15 p-8 sm:p-12 bg-[#171512]/[0.03]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7 space-y-6">
               <p className="text-xs uppercase tracking-[0.22em] text-[#171512]/65">
@@ -248,11 +254,11 @@ export default async function ServiceDetailPage({
               </div>
             </div>
           </div>
-        </div>
+        </RevealOnScroll>
 
         {/* Service FAQs & Specialist Pairing */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-7 space-y-6">
+          <RevealOnScroll className="lg:col-span-7 space-y-6">
             <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#171512]/65">
               <HelpCircle className="w-4 h-4 text-[#C7A77B]" />
               <span>Service-Specific Questions</span>
@@ -270,9 +276,9 @@ export default async function ServiceDetailPage({
                 </div>
               ))}
             </div>
-          </div>
+          </RevealOnScroll>
 
-          <div className="lg:col-span-5 border border-[#171512]/15 p-8 bg-[#F3EDE4] space-y-6">
+          <RevealOnScroll delay={0.12} className="lg:col-span-5 border border-[#171512]/15 p-8 bg-[#F3EDE4] space-y-6">
             <p className="text-xs uppercase tracking-[0.2em] text-[#C7A77B] font-medium">
               Recommended Artisans
             </p>
@@ -299,13 +305,13 @@ export default async function ServiceDetailPage({
               ))}
             </div>
             <p className="text-[11px] text-[#171512]/60">{BRAND_INFO.demoNotice}</p>
-          </div>
+          </RevealOnScroll>
         </div>
 
         {/* Related Services */}
         {relatedServices.length > 0 && (
           <div className="pt-12 border-t border-[#171512]/15 space-y-8">
-            <div className="flex items-center justify-between">
+            <RevealOnScroll className="flex items-center justify-between">
               <h2 className="font-serif-editorial text-3xl text-[#171512]">
                 Complementary {service.category} Rituals
               </h2>
@@ -316,13 +322,13 @@ export default async function ServiceDetailPage({
                 <span>All Services</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
-            </div>
+            </RevealOnScroll>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {relatedServices.map((rel) => (
-                <div
+                <StaggerItem
                   key={rel.id}
-                  className="border border-[#171512]/15 p-6 bg-[#F3EDE4] flex flex-col justify-between space-y-5"
+                  className="border border-[#171512]/15 p-6 bg-[#F3EDE4] hover:border-[#C7A77B] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between space-y-5"
                 >
                   <div className="space-y-2">
                     <div className="text-xs text-[#171512]/65 uppercase tracking-[0.15em]">
@@ -351,9 +357,9 @@ export default async function ServiceDetailPage({
                       Book Now
                     </Link>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         )}
       </section>

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Calendar } from 'lucide-react';
 import GalleryView from '@/components/gallery/GalleryView';
+import { RevealOnScroll } from '@/components/ui/MotionPrimitives';
 
 export const metadata: Metadata = {
   title: 'Editorial Visual Gallery — Salon Interiors, Bridal, Hair & Skin Transformations',
@@ -15,7 +16,7 @@ export default function GalleryPage() {
     <div className="bg-[#F3EDE4] text-[#171512]">
       {/* Page Hero */}
       <section className="bg-[#171512] text-[#F3EDE4] pt-36 pb-20 lg:pt-44 lg:pb-24 border-b border-[#C7A77B]/30">
-        <div className="max-w-[1360px] mx-auto px-5 sm:px-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+        <RevealOnScroll className="max-w-[1360px] mx-auto px-5 sm:px-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div className="space-y-4 max-w-3xl">
             <p className="text-xs uppercase tracking-[0.26em] text-[#C7A77B]">
               Visual Archive & Lookbook
@@ -33,12 +34,12 @@ export default function GalleryPage() {
 
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 px-7 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap shrink-0"
+            className="inline-flex items-center gap-2 px-7 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap shrink-0"
           >
             <Calendar className="w-4 h-4" />
             <span>Book Your Transformation</span>
           </Link>
-        </div>
+        </RevealOnScroll>
       </section>
 
       <section className="py-16 lg:py-24 px-5 sm:px-8 max-w-[1360px] mx-auto">

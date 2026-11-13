@@ -1,7 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Calendar, ShieldCheck, Sparkles, Award, Compass } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import LuxuryImage from '@/components/ui/LuxuryImage';
+import {
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+  ImageMaskReveal,
+  GoldLineReveal,
+} from '@/components/ui/MotionPrimitives';
 import { BRAND_INFO, SPECIALISTS_DATA } from '@/lib/elora-data';
 
 export const metadata: Metadata = {
@@ -16,7 +23,7 @@ export default function AboutPage() {
       {/* Editorial Hero */}
       <section className="relative bg-[#171512] text-[#F3EDE4] pt-36 pb-24 lg:pt-44 lg:pb-32 overflow-hidden border-b border-[#C7A77B]/30">
         <div className="max-w-[1360px] mx-auto px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 space-y-6">
+          <RevealOnScroll className="lg:col-span-7 space-y-6">
             <p className="text-xs uppercase tracking-[0.26em] text-[#C7A77B]">
               Maison ÉLORA · Heritage & Philosophy
             </p>
@@ -29,23 +36,23 @@ export default function AboutPage() {
             <p className="text-base sm:text-lg text-[#F3EDE4]/80 leading-relaxed max-w-2xl">
               {BRAND_INFO.description}
             </p>
-          </div>
+          </RevealOnScroll>
 
-          <div className="lg:col-span-5 relative h-[380px] sm:h-[440px] border border-[#C7A77B]/35">
+          <ImageMaskReveal delay={0.15} className="lg:col-span-5 relative h-[380px] sm:h-[440px] border border-[#C7A77B]/35">
             <LuxuryImage
               src="/images/hero-atelier.jpg"
               alt="Travertine arches and brass mirrors inside ÉLORA Beauty Atelier"
               priority
               className="object-cover"
             />
-          </div>
+          </ImageMaskReveal>
         </div>
       </section>
 
       {/* Our Story & Brand Philosophy */}
       <section className="py-24 lg:py-32 px-5 sm:px-8 max-w-[1360px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-5 space-y-4">
+          <RevealOnScroll className="lg:col-span-5 space-y-4">
             <p className="text-xs uppercase tracking-[0.24em] text-[#171512]/65">
               01 · Our Origin Story
             </p>
@@ -55,10 +62,10 @@ export default function AboutPage() {
             >
               Born from European Haute Couture Backstage & Holistic Esthetics.
             </h2>
-            <div className="w-16 h-[1px] bg-[#C7A77B] mt-4" />
-          </div>
+            <GoldLineReveal className="w-16 h-[1px] bg-[#C7A77B] mt-4" />
+          </RevealOnScroll>
 
-          <div className="lg:col-span-7 space-y-6 text-base text-[#171512]/80 leading-relaxed">
+          <RevealOnScroll delay={0.12} className="lg:col-span-7 space-y-6 text-base text-[#171512]/80 leading-relaxed">
             <p>
               ÉLORA Beauty Atelier was founded by Creative Hair Director Céleste Vance alongside Lead Dermal Aesthetician Dr. Soraya Rostami after fifteen years working between Paris fashion weeks and Geneva cellular skin clinics. Both noticed the same paradox in modern salons: women were asked to choose between clinical efficiency that felt cold and rushed, or spa indulgence that lacked technical mastery.
             </p>
@@ -73,24 +80,24 @@ export default function AboutPage() {
                 — Céleste Vance & Dr. Soraya Rostami
               </footer>
             </blockquote>
-          </div>
+          </RevealOnScroll>
         </div>
       </section>
 
       {/* Mission, Vision & Beauty Philosophy */}
       <section className="py-24 bg-[#171512] text-[#F3EDE4] border-y border-[#C7A77B]/25">
         <div className="max-w-[1360px] mx-auto px-5 sm:px-8 space-y-16">
-          <div className="max-w-2xl space-y-3">
+          <RevealOnScroll className="max-w-2xl space-y-3">
             <p className="text-xs uppercase tracking-[0.24em] text-[#C7A77B]">
               02 · Mission, Vision & Ethos
             </p>
             <h2 className="font-serif-editorial text-4xl sm:text-5xl font-normal text-[#F3EDE4]">
               Three Principles Guiding Every Ritual
             </h2>
-          </div>
+          </RevealOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="border border-[#F3EDE4]/15 p-8 space-y-4 bg-[#F3EDE4]/[0.02]">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <StaggerItem className="border border-[#F3EDE4]/15 p-8 space-y-4 bg-[#F3EDE4]/[0.02] hover:border-[#C7A77B]/50 transition-colors">
               <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#C7A77B]">
                 01 · Our Mission
               </span>
@@ -100,9 +107,9 @@ export default function AboutPage() {
               <p className="text-sm text-[#F3EDE4]/75 leading-relaxed">
                 To transform routine beauty maintenance into a restorative personal ceremony—where every guest receives undivided specialist attention, honest diagnostic guidance, and long-lasting results.
               </p>
-            </div>
+            </StaggerItem>
 
-            <div className="border border-[#F3EDE4]/15 p-8 space-y-4 bg-[#F3EDE4]/[0.02]">
+            <StaggerItem className="border border-[#F3EDE4]/15 p-8 space-y-4 bg-[#F3EDE4]/[0.02] hover:border-[#C7A77B]/50 transition-colors">
               <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#C7A77B]">
                 02 · Our Vision
               </span>
@@ -112,9 +119,9 @@ export default function AboutPage() {
               <p className="text-sm text-[#F3EDE4]/75 leading-relaxed">
                 To set the global benchmark for clean luxury beauty—proving that ammonia-free colour, barrier-respecting cellular skincare, and HEMA-free nail couture outperform harsh conventional methods.
               </p>
-            </div>
+            </StaggerItem>
 
-            <div className="border border-[#F3EDE4]/15 p-8 space-y-4 bg-[#F3EDE4]/[0.02]">
+            <StaggerItem className="border border-[#F3EDE4]/15 p-8 space-y-4 bg-[#F3EDE4]/[0.02] hover:border-[#C7A77B]/50 transition-colors">
               <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#C7A77B]">
                 03 · Beauty Philosophy
               </span>
@@ -124,15 +131,15 @@ export default function AboutPage() {
               <p className="text-sm text-[#F3EDE4]/75 leading-relaxed">
                 Whether sculpting a collarbone cut, performing intra-oral buccal lifting, or preparing a bride for her ceremony, our work honors the health of your hair fiber, skin barrier, and natural nail plate first.
               </p>
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Salon Ambience & Interiors */}
       <section className="py-24 lg:py-32 px-5 sm:px-8 max-w-[1360px] mx-auto space-y-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 space-y-6">
+          <RevealOnScroll className="lg:col-span-6 space-y-6">
             <p className="text-xs uppercase tracking-[0.24em] text-[#171512]/65">
               03 · Architectural Sanctuary
             </p>
@@ -146,7 +153,7 @@ export default function AboutPage() {
               Our interior architecture was conceived as a sensory exhale. Arched ceilings clad in sound-absorbing Venetian plaster eliminate salon echo. Custom champagne-brass vanity mirrors feature adjustable Kelvin daylight calibration so you see hair colour and complexion tones in true natural light.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-              <div className="border border-[#171512]/15 p-5">
+              <div className="border border-[#171512]/15 p-5 hover:border-[#C7A77B] transition-colors">
                 <h3 className="font-serif-editorial text-xl text-[#171512]">
                   The Travertine Hair Gallery
                 </h3>
@@ -154,7 +161,7 @@ export default function AboutPage() {
                   Generously spaced bouclé styling stations with private botanical steam wash suites.
                 </p>
               </div>
-              <div className="border border-[#171512]/15 p-5">
+              <div className="border border-[#171512]/15 p-5 hover:border-[#C7A77B] transition-colors">
                 <h3 className="font-serif-editorial text-xl text-[#171512]">
                   Acoustic Dermal & Spa Suites
                 </h3>
@@ -163,30 +170,30 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
           <div className="lg:col-span-6 grid grid-cols-2 gap-6">
-            <div className="relative h-80 sm:h-96 border border-[#171512]/15">
+            <ImageMaskReveal className="relative h-80 sm:h-96 border border-[#171512]/15">
               <LuxuryImage
                 src="/images/skin-ritual.jpg"
                 alt="ÉLORA private facial and wellness suite"
                 className="object-cover"
               />
-            </div>
-            <div className="relative h-80 sm:h-96 border border-[#171512]/15 mt-8">
+            </ImageMaskReveal>
+            <ImageMaskReveal delay={0.18} className="relative h-80 sm:h-96 border border-[#171512]/15 mt-8">
               <LuxuryImage
                 src="/images/nail-spa.jpg"
                 alt="Botanical apothecary and travertine manicure sanctuary"
                 className="object-cover"
               />
-            </div>
+            </ImageMaskReveal>
           </div>
         </div>
       </section>
 
       {/* Professional Standards & CTA */}
       <section className="py-20 bg-[#171512]/[0.05] border-t border-[#171512]/15">
-        <div className="max-w-[1360px] mx-auto px-5 sm:px-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+        <RevealOnScroll className="max-w-[1360px] mx-auto px-5 sm:px-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
           <div className="space-y-3 max-w-2xl">
             <p className="text-xs uppercase tracking-[0.22em] text-[#C7A77B] font-medium">
               04 · Experience Maison ÉLORA
@@ -202,19 +209,19 @@ export default function AboutPage() {
           <div className="flex flex-wrap items-center gap-4 shrink-0">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-7 py-4 bg-[#171512] text-[#F3EDE4] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#C7A77B] hover:text-[#171512] transition-colors"
+              className="inline-flex items-center gap-2 px-7 py-4 bg-[#171512] text-[#F3EDE4] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#C7A77B] hover:text-[#171512] transition-all duration-300 hover:-translate-y-0.5"
             >
               <span>Explore Our Services</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/experts"
-              className="inline-flex items-center gap-2 px-7 py-4 border border-[#171512] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#171512] hover:text-[#F3EDE4] transition-colors"
+              className="inline-flex items-center gap-2 px-7 py-4 border border-[#171512] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#171512] hover:text-[#F3EDE4] transition-all duration-300 hover:-translate-y-0.5"
             >
               <span>Meet Our {SPECIALISTS_DATA.length} Experts</span>
             </Link>
           </div>
-        </div>
+        </RevealOnScroll>
       </section>
     </div>
   );

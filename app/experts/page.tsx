@@ -3,6 +3,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Calendar, ArrowUpRight, Award } from 'lucide-react';
 import LuxuryImage from '@/components/ui/LuxuryImage';
+import {
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+} from '@/components/ui/MotionPrimitives';
 import { SPECIALISTS_DATA, BRAND_INFO } from '@/lib/elora-data';
 
 export const metadata: Metadata = {
@@ -16,7 +21,7 @@ export default function ExpertsPage() {
     <div className="bg-[#F3EDE4] text-[#171512]">
       {/* Page Hero */}
       <section className="bg-[#171512] text-[#F3EDE4] pt-36 pb-20 lg:pt-44 lg:pb-28 border-b border-[#C7A77B]/30">
-        <div className="max-w-[1360px] mx-auto px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+        <RevealOnScroll className="max-w-[1360px] mx-auto px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8 space-y-4">
             <p className="text-xs uppercase tracking-[0.26em] text-[#C7A77B]">
               Master Collective · Maison ÉLORA
@@ -35,22 +40,22 @@ export default function ExpertsPage() {
           <div className="lg:col-span-4 lg:text-right">
             <Link
               href="/book"
-              className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
             >
               <Calendar className="w-4 h-4" />
               <span>Reserve With a Specialist</span>
             </Link>
           </div>
-        </div>
+        </RevealOnScroll>
       </section>
 
       {/* Specialists Editorial Grid */}
       <section className="py-20 lg:py-28 px-5 sm:px-8 max-w-[1360px] mx-auto space-y-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {SPECIALISTS_DATA.map((specialist, index) => (
-            <article
+            <StaggerItem
               key={specialist.id}
-              className="border border-[#171512]/15 bg-[#F3EDE4] hover:border-[#C7A77B] transition-colors grid grid-cols-1 sm:grid-cols-12 overflow-hidden group"
+              className="border border-[#171512]/15 bg-[#F3EDE4] hover:border-[#C7A77B] transition-all duration-300 hover:-translate-y-1 grid grid-cols-1 sm:grid-cols-12 overflow-hidden group"
             >
               <div className="sm:col-span-5 relative min-h-[340px] sm:h-full overflow-hidden">
                 <LuxuryImage
@@ -119,12 +124,12 @@ export default function ExpertsPage() {
                   </div>
                 </div>
               </div>
-            </article>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Collective Standards Banner */}
-        <div className="p-8 sm:p-12 bg-[#171512] text-[#F3EDE4] border border-[#C7A77B]/30 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <RevealOnScroll className="p-8 sm:p-12 bg-[#171512] text-[#F3EDE4] border border-[#C7A77B]/30 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8 space-y-3">
             <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#C7A77B]">
               <Award className="w-4 h-4" />
@@ -140,12 +145,12 @@ export default function ExpertsPage() {
           <div className="lg:col-span-4 lg:text-right">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-7 py-4 border border-[#C7A77B] text-[#C7A77B] text-xs uppercase tracking-[0.2em] hover:bg-[#C7A77B] hover:text-[#171512] transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-7 py-4 border border-[#C7A77B] text-[#C7A77B] text-xs uppercase tracking-[0.2em] hover:bg-[#C7A77B] hover:text-[#171512] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
             >
               <span>Consult Our Concierge</span>
             </Link>
           </div>
-        </div>
+        </RevealOnScroll>
       </section>
     </div>
   );

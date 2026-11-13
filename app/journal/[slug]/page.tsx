@@ -4,6 +4,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Calendar, Check } from 'lucide-react';
 import LuxuryImage from '@/components/ui/LuxuryImage';
+import {
+  RevealOnScroll,
+  ImageMaskReveal,
+} from '@/components/ui/MotionPrimitives';
 import { JOURNAL_ARTICLES } from '@/lib/elora-data';
 
 export async function generateStaticParams() {
@@ -44,7 +48,7 @@ export default async function JournalArticleDetailPage({
     <div className="bg-[#F3EDE4] text-[#171512]">
       {/* Editorial Header */}
       <section className="bg-[#171512] text-[#F3EDE4] pt-36 pb-20 lg:pt-44 lg:pb-24 border-b border-[#C7A77B]/30">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 space-y-6">
+        <RevealOnScroll className="max-w-4xl mx-auto px-5 sm:px-8 space-y-6">
           <Link
             href="/journal"
             className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#C7A77B] hover:text-[#F3EDE4] transition-colors"
@@ -78,12 +82,12 @@ export default async function JournalArticleDetailPage({
               {article.authorRole})
             </span>
           </div>
-        </div>
+        </RevealOnScroll>
       </section>
 
       {/* Article Body */}
       <article className="py-16 lg:py-24 px-5 sm:px-8 max-w-4xl mx-auto space-y-12">
-        <div className="relative h-[360px] sm:h-[480px] w-full border border-[#171512]/15">
+        <ImageMaskReveal className="relative h-[360px] sm:h-[480px] w-full border border-[#171512]/15">
           <LuxuryImage
             src={article.coverImage}
             alt={article.title}
@@ -91,29 +95,31 @@ export default async function JournalArticleDetailPage({
             sizes="(max-width: 1024px) 100vw, 900px"
             className="object-cover"
           />
-        </div>
+        </ImageMaskReveal>
 
-        <blockquote className="p-8 sm:p-10 bg-[#171512] text-[#F3EDE4] border border-[#C7A77B]/35">
-          <p className="font-serif-editorial text-2xl sm:text-3xl italic leading-snug text-[#F3EDE4]">
-            “{article.pullQuote}”
-          </p>
-        </blockquote>
+        <RevealOnScroll>
+          <blockquote className="p-8 sm:p-10 bg-[#171512] text-[#F3EDE4] border border-[#C7A77B]/35">
+            <p className="font-serif-editorial text-2xl sm:text-3xl italic leading-snug text-[#F3EDE4]">
+              “{article.pullQuote}”
+            </p>
+          </blockquote>
+        </RevealOnScroll>
 
         <div className="space-y-10">
           {article.sections.map((sec, idx) => (
-            <div key={idx} className="space-y-4">
+            <RevealOnScroll key={idx} className="space-y-4">
               <h2 className="font-serif-editorial text-3xl text-[#171512]">{sec.heading}</h2>
               {sec.paragraphs.map((p, pIdx) => (
                 <p key={pIdx} className="text-base text-[#171512]/85 leading-relaxed">
                   {p}
                 </p>
               ))}
-            </div>
+            </RevealOnScroll>
           ))}
         </div>
 
         {/* Key Takeaways */}
-        <div className="p-8 border border-[#171512]/20 bg-[#171512]/[0.03] space-y-4">
+        <RevealOnScroll className="p-8 border border-[#171512]/20 bg-[#171512]/[0.03] space-y-4">
           <p className="text-xs uppercase tracking-[0.2em] text-[#C7A77B] font-medium">
             Atelier Key Takeaways
           </p>
@@ -125,10 +131,10 @@ export default async function JournalArticleDetailPage({
               </li>
             ))}
           </ul>
-        </div>
+        </RevealOnScroll>
 
         {/* Book CTA */}
-        <div className="p-8 bg-[#171512] text-[#F3EDE4] border border-[#C7A77B]/30 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <RevealOnScroll className="p-8 bg-[#171512] text-[#F3EDE4] border border-[#C7A77B]/30 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
             <p className="text-xs uppercase tracking-[0.18em] text-[#C7A77B]">
               Experience It in Person
@@ -139,15 +145,15 @@ export default async function JournalArticleDetailPage({
           </div>
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.18em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap shrink-0"
+            className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.18em] font-medium hover:bg-[#F3EDE4] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap shrink-0"
           >
             <Calendar className="w-4 h-4" />
             <span>Book Appointment</span>
           </Link>
-        </div>
+        </RevealOnScroll>
 
         {/* Related Articles */}
-        <div className="pt-12 border-t border-[#171512]/15 space-y-8">
+        <RevealOnScroll className="pt-12 border-t border-[#171512]/15 space-y-8">
           <h2 className="font-serif-editorial text-3xl text-[#171512]">
             Continue Reading The ÉLORA Edit
           </h2>
@@ -156,7 +162,7 @@ export default async function JournalArticleDetailPage({
               <Link
                 key={rel.id}
                 href={`/journal/${rel.slug}`}
-                className="group border border-[#171512]/15 p-6 bg-[#F3EDE4] hover:border-[#C7A77B] transition-colors flex flex-col justify-between space-y-4"
+                className="group border border-[#171512]/15 p-6 bg-[#F3EDE4] hover:border-[#C7A77B] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-2">
                   <p className="text-xs uppercase tracking-[0.16em] text-[#C7A77B]">
@@ -174,7 +180,7 @@ export default async function JournalArticleDetailPage({
               </Link>
             ))}
           </div>
-        </div>
+        </RevealOnScroll>
       </article>
     </div>
   );

@@ -14,6 +14,13 @@ import {
 import LuxuryImage from '@/components/ui/LuxuryImage';
 import TestimonialCarousel from '@/components/home/TestimonialCarousel';
 import {
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+  ImageMaskReveal,
+  GoldLineReveal,
+} from '@/components/ui/MotionPrimitives';
+import {
   BRAND_INFO,
   SERVICE_CATEGORIES,
   SERVICES_DATA,
@@ -76,76 +83,89 @@ export default function HomePage() {
             sizes="100vw"
             className="object-cover object-center scale-[1.02] transition-transform duration-1000"
           />
-          {/* Measured contrast scrim for 4.5:1+ legibility */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#171512]/90 via-[#171512]/70 to-[#171512]/45" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#171512] via-transparent to-[#171512]/50" />
         </div>
 
         <div className="relative z-10 max-w-[1360px] w-full mx-auto px-5 sm:px-8 pt-10 pb-12">
-          <div className="max-w-3xl space-y-6">
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] sm:text-xs uppercase tracking-[0.22em] text-[#C7A77B]">
-              <span>ÉLORA Beauty Atelier</span>
-              <span aria-hidden="true" className="hidden sm:inline">·</span>
-              <span>Where Beauty Becomes an Experience</span>
-            </div>
+          <StaggerContainer staggerDelay={0.12} className="max-w-3xl space-y-6">
+            <StaggerItem>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] sm:text-xs uppercase tracking-[0.22em] text-[#C7A77B]">
+                <span>ÉLORA Beauty Atelier</span>
+                <span aria-hidden="true" className="hidden sm:inline">
+                  ·
+                </span>
+                <span>Where Beauty Becomes an Experience</span>
+              </div>
+            </StaggerItem>
 
-            <h1
-              className="font-serif-editorial text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.06] tracking-wide text-[#F3EDE4]"
-              style={{ textWrap: 'balance' }}
-            >
-              Discover Your Most Beautiful Self.
-            </h1>
-
-            <p className="text-base sm:text-lg text-[#F3EDE4]/85 max-w-xl leading-relaxed font-normal">
-              An elevated beauty experience designed around you. From architectural hair artistry and 24K cellular skin rituals to timeless bridal couture.
-            </p>
-
-            <div className="pt-4 flex flex-wrap items-center gap-4">
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap"
+            <StaggerItem>
+              <h1
+                className="font-serif-editorial text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.06] tracking-wide text-[#F3EDE4]"
+                style={{ textWrap: 'balance' }}
               >
-                <span>Explore Our Services</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+                Discover Your Most Beautiful Self.
+              </h1>
+            </StaggerItem>
 
-              <Link
-                href="/book"
-                className="inline-flex items-center gap-3 px-8 py-4 border border-[#F3EDE4]/60 bg-[#171512]/40 backdrop-blur-xs text-[#F3EDE4] text-xs uppercase tracking-[0.2em] font-medium hover:border-[#C7A77B] hover:text-[#C7A77B] transition-colors whitespace-nowrap"
-              >
-                <Calendar className="w-4 h-4 text-[#C7A77B]" />
-                <span>Book Your Experience</span>
-              </Link>
-            </div>
-          </div>
+            <StaggerItem>
+              <p className="text-base sm:text-lg text-[#F3EDE4]/85 max-w-xl leading-relaxed font-normal">
+                An elevated beauty experience designed around you. From architectural hair artistry and 24K cellular skin rituals to timeless bridal couture.
+              </p>
+            </StaggerItem>
+
+            <StaggerItem>
+              <div className="pt-4 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
+                >
+                  <span>Explore Our Services</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+
+                <Link
+                  href="/book"
+                  className="inline-flex items-center gap-3 px-8 py-4 border border-[#F3EDE4]/60 bg-[#171512]/40 backdrop-blur-xs text-[#F3EDE4] text-xs uppercase tracking-[0.2em] font-medium hover:border-[#C7A77B] hover:text-[#C7A77B] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
+                >
+                  <Calendar className="w-4 h-4 text-[#C7A77B]" />
+                  <span>Book Your Experience</span>
+                </Link>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
 
           {/* Full-width Architectural Proof Strip below Hero copy */}
-          <div className="mt-16 lg:mt-24 pt-8 border-t border-[#F3EDE4]/20 grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            <div>
+          <StaggerContainer
+            staggerDelay={0.1}
+            delayChildren={0.25}
+            className="mt-16 lg:mt-24 pt-8 border-t border-[#F3EDE4]/20 grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+          >
+            <StaggerItem>
               <p className="font-serif-editorial text-2xl sm:text-3xl text-[#C7A77B] tabular-nums">
                 22+ Rituals
               </p>
               <p className="text-xs text-[#F3EDE4]/75 mt-1">
                 Across Hair, Skin, Bridal, Nails & Holistic Spa
               </p>
-            </div>
-            <div>
+            </StaggerItem>
+            <StaggerItem>
               <p className="font-serif-editorial text-2xl sm:text-3xl text-[#C7A77B] tabular-nums">
                 100% Bespoke
               </p>
               <p className="text-xs text-[#F3EDE4]/75 mt-1">
                 Private bone-structure & dermal barrier diagnostics
               </p>
-            </div>
-            <div>
+            </StaggerItem>
+            <StaggerItem>
               <p className="font-serif-editorial text-2xl sm:text-3xl text-[#C7A77B] tabular-nums">
                 Class-B Sterile
               </p>
               <p className="text-xs text-[#F3EDE4]/75 mt-1">
                 Hospital-grade autoclave & botanical purity standards
               </p>
-            </div>
-            <div className="flex items-end justify-between">
+            </StaggerItem>
+            <StaggerItem className="flex items-end justify-between">
               <div>
                 <p className="font-serif-editorial text-2xl sm:text-3xl text-[#C7A77B]">
                   Maison ÉLORA
@@ -161,15 +181,18 @@ export default function HomePage() {
               >
                 <ChevronDown className="w-4 h-4" />
               </a>
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* SECTION A: BRAND INTRODUCTION */}
-      <section id="brand-introduction" className="py-24 lg:py-32 px-5 sm:px-8 max-w-[1360px] mx-auto">
+      <section
+        id="brand-introduction"
+        className="py-24 lg:py-32 px-5 sm:px-8 max-w-[1360px] mx-auto"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
-          <div className="lg:col-span-6 flex flex-col justify-between space-y-8">
+          <RevealOnScroll direction="up" className="lg:col-span-6 flex flex-col justify-between space-y-8">
             <div className="space-y-5">
               <p className="text-xs uppercase tracking-[0.24em] text-[#171512]/70">
                 01 · The Philosophy of Maison ÉLORA
@@ -180,7 +203,7 @@ export default function HomePage() {
               >
                 Where haute beauty artistry meets unhurried sensory restoration.
               </h2>
-              <div className="w-16 h-[1px] bg-[#C7A77B]" />
+              <GoldLineReveal />
             </div>
 
             <div className="space-y-5 text-base text-[#171512]/80 leading-relaxed">
@@ -207,32 +230,32 @@ export default function HomePage() {
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
-          </div>
+          </RevealOnScroll>
 
           <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-12 gap-6 items-stretch">
-            <div className="sm:col-span-7 relative min-h-[380px] lg:h-full border border-[#171512]/10">
+            <ImageMaskReveal className="sm:col-span-7 relative min-h-[380px] lg:h-full border border-[#171512]/10">
               <LuxuryImage
                 src="/images/hair-artistry.jpg"
                 alt="Dimensional honey champagne balayage hair artistry at ÉLORA"
                 className="object-cover"
               />
-            </div>
+            </ImageMaskReveal>
             <div className="sm:col-span-5 flex flex-col justify-between gap-6">
-              <div className="relative h-64 sm:h-full border border-[#171512]/10">
+              <ImageMaskReveal delay={0.15} className="relative h-64 sm:h-full border border-[#171512]/10">
                 <LuxuryImage
                   src="/images/skin-ritual.jpg"
                   alt="Cellular facial massage ritual in candlelit suite"
                   className="object-cover"
                 />
-              </div>
-              <div className="p-6 bg-[#171512] text-[#F3EDE4] border border-[#C7A77B]/30">
+              </ImageMaskReveal>
+              <RevealOnScroll delay={0.25} className="p-6 bg-[#171512] text-[#F3EDE4] border border-[#C7A77B]/30">
                 <p className="text-[11px] uppercase tracking-[0.2em] text-[#C7A77B]">
                   Bespoke Consultations
                 </p>
                 <p className="font-serif-editorial text-xl mt-2 text-[#F3EDE4]">
                   Complimentary 20-minute diagnostic mapping with every ritual.
                 </p>
-              </div>
+              </RevealOnScroll>
             </div>
           </div>
         </div>
@@ -241,7 +264,7 @@ export default function HomePage() {
       {/* SECTION B: SIGNATURE SERVICES & CATEGORIES */}
       <section className="py-24 lg:py-32 bg-[#171512] text-[#F3EDE4] border-y border-[#C7A77B]/25">
         <div className="max-w-[1360px] mx-auto px-5 sm:px-8 space-y-16">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-[#F3EDE4]/15 pb-10">
+          <RevealOnScroll className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-[#F3EDE4]/15 pb-10">
             <div className="space-y-3 max-w-2xl">
               <p className="text-xs uppercase tracking-[0.24em] text-[#C7A77B]">
                 02 · Curated Disciplines
@@ -256,75 +279,76 @@ export default function HomePage() {
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.18em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.18em] font-medium hover:bg-[#F3EDE4] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
               >
                 <span>Explore All 22 Services</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#C7A77B]/45 text-[#F3EDE4] text-xs uppercase tracking-[0.18em] hover:border-[#C7A77B] hover:text-[#C7A77B] transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#C7A77B]/45 text-[#F3EDE4] text-xs uppercase tracking-[0.18em] hover:border-[#C7A77B] hover:text-[#C7A77B] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
               >
                 <span>Complete Price Menu</span>
               </Link>
             </div>
-          </div>
+          </RevealOnScroll>
 
           {/* 5 Pillars Category Showcase */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {SERVICE_CATEGORIES.map((cat, idx) => (
-              <Link
-                key={cat.id}
-                href={`/services?category=${encodeURIComponent(cat.id)}`}
-                className="group border border-[#F3EDE4]/15 bg-[#171512] hover:border-[#C7A77B] transition-all duration-300 flex flex-col justify-between overflow-hidden"
-              >
-                <div className="relative h-64 w-full overflow-hidden">
-                  <LuxuryImage
-                    src={cat.heroImage}
-                    alt={cat.label}
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#171512] via-[#171512]/20 to-transparent" />
-                  <span className="absolute top-3 left-3 text-xs tracking-[0.2em] text-[#F3EDE4]/90 font-mono tabular-nums">
-                    0{idx + 1}
-                  </span>
-                </div>
-
-                <div className="p-6 flex-grow flex flex-col justify-between space-y-5">
-                  <div>
-                    <h3 className="font-serif-editorial text-2xl text-[#F3EDE4] group-hover:text-[#C7A77B] transition-colors">
-                      {cat.label}
-                    </h3>
-                    <p className="text-xs text-[#F3EDE4]/70 mt-2 leading-relaxed">
-                      {cat.tagline}
-                    </p>
+              <StaggerItem key={cat.id} className="h-full">
+                <Link
+                  href={`/services?category=${encodeURIComponent(cat.id)}`}
+                  className="group h-full border border-[#F3EDE4]/15 bg-[#171512] hover:border-[#C7A77B] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden"
+                >
+                  <div className="relative h-64 w-full overflow-hidden">
+                    <LuxuryImage
+                      src={cat.heroImage}
+                      alt={cat.label}
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#171512] via-[#171512]/20 to-transparent" />
+                    <span className="absolute top-3 left-3 text-xs tracking-[0.2em] text-[#F3EDE4]/90 font-mono tabular-nums">
+                      0{idx + 1}
+                    </span>
                   </div>
 
-                  <div className="pt-3 border-t border-[#F3EDE4]/10 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-[#C7A77B]">
-                    <span>Discover Rituals</span>
-                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <div className="p-6 flex-grow flex flex-col justify-between space-y-5">
+                    <div>
+                      <h3 className="font-serif-editorial text-2xl text-[#F3EDE4] group-hover:text-[#C7A77B] transition-colors">
+                        {cat.label}
+                      </h3>
+                      <p className="text-xs text-[#F3EDE4]/70 mt-2 leading-relaxed">
+                        {cat.tagline}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-[#F3EDE4]/10 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-[#C7A77B]">
+                      <span>Discover Rituals</span>
+                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
           {/* Featured Individual Rituals Row */}
           <div className="pt-8 space-y-8">
-            <div className="flex items-center justify-between">
+            <RevealOnScroll className="flex items-center justify-between">
               <h3 className="font-serif-editorial text-2xl sm:text-3xl text-[#F3EDE4]">
                 Most Requested Signature Rituals
               </h3>
               <span className="text-xs uppercase tracking-[0.18em] text-[#C7A77B]">
                 Demonstration Pricing
               </span>
-            </div>
+            </RevealOnScroll>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredServices.slice(0, 3).map((service) => (
-                <div
+                <StaggerItem
                   key={service.id}
-                  className="border border-[#F3EDE4]/15 bg-[#F3EDE4]/[0.03] flex flex-col justify-between group hover:border-[#C7A77B]/60 transition-colors"
+                  className="border border-[#F3EDE4]/15 bg-[#F3EDE4]/[0.03] flex flex-col justify-between group hover:border-[#C7A77B]/60 transition-all duration-300 hover:-translate-y-1"
                 >
                   <div>
                     <div className="relative h-64 w-full overflow-hidden">
@@ -366,16 +390,16 @@ export default function HomePage() {
                       Book Now
                     </Link>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </div>
       </section>
 
       {/* SECTION C: WHY ÉLORA */}
       <section className="py-24 lg:py-32 px-5 sm:px-8 max-w-[1360px] mx-auto">
-        <div className="max-w-3xl space-y-4 mb-16">
+        <RevealOnScroll className="max-w-3xl space-y-4 mb-16">
           <p className="text-xs uppercase tracking-[0.24em] text-[#171512]/70">
             03 · The ÉLORA Standard
           </p>
@@ -385,15 +409,16 @@ export default function HomePage() {
           >
             Why Discerning Women Entrust Their Beauty to Maison ÉLORA
           </h2>
-        </div>
+          <GoldLineReveal />
+        </RevealOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {WHY_ELORA_PILLARS.map((pillar) => {
             const IconComponent = pillar.icon;
             return (
-              <div
+              <StaggerItem
                 key={pillar.number}
-                className="border border-[#171512]/15 p-7 bg-[#F3EDE4] hover:border-[#C7A77B] transition-colors flex flex-col justify-between space-y-6"
+                className="border border-[#171512]/15 p-7 bg-[#F3EDE4] hover:border-[#C7A77B] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between space-y-6"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#C7A77B] tabular-nums">
@@ -409,21 +434,21 @@ export default function HomePage() {
                     {pillar.description}
                   </p>
                 </div>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
       </section>
 
       {/* SECTION D: SIGNATURE EXPERIENCE (IMMERSIVE EDITORIAL) */}
       <section className="px-5 sm:px-8 max-w-[1360px] mx-auto pb-24 lg:pb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 border border-[#171512]/15 bg-[#171512] text-[#F3EDE4] overflow-hidden items-stretch">
-          <div className="lg:col-span-7 relative min-h-[420px] lg:min-h-[540px]">
+        <RevealOnScroll className="grid grid-cols-1 lg:grid-cols-12 border border-[#171512]/15 bg-[#171512] text-[#F3EDE4] overflow-hidden items-stretch">
+          <div className="lg:col-span-7 relative min-h-[420px] lg:min-h-[540px] overflow-hidden group">
             <LuxuryImage
               src="/images/bridal-couture.jpg"
               alt="Haute Couture Bridal Suite & Cellular Sculpting Experience at ÉLORA"
               sizes="(max-width: 1024px) 100vw, 60vw"
-              className="object-cover"
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
           </div>
 
@@ -452,26 +477,26 @@ export default function HomePage() {
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link
                 href="/book?category=Makeup"
-                className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
               >
                 <span>Reserve Private Suite</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-6 py-4 border border-[#C7A77B]/50 text-[#F3EDE4] text-xs uppercase tracking-[0.18em] hover:border-[#C7A77B] hover:text-[#C7A77B] transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-6 py-4 border border-[#C7A77B]/50 text-[#F3EDE4] text-xs uppercase tracking-[0.18em] hover:border-[#C7A77B] hover:text-[#C7A77B] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
               >
                 <span>Explore Bridal Packages</span>
               </Link>
             </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </section>
 
       {/* SECTION E: FEATURED SPECIALISTS */}
       <section className="py-24 lg:py-32 bg-[#171512]/[0.04] border-t border-[#171512]/10">
         <div className="max-w-[1360px] mx-auto px-5 sm:px-8 space-y-14">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+          <RevealOnScroll className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
             <div className="space-y-3">
               <p className="text-xs uppercase tracking-[0.24em] text-[#171512]/70">
                 05 · The Artisans
@@ -487,13 +512,13 @@ export default function HomePage() {
               <span>View All 6 Master Specialists</span>
               <ArrowUpRight className="w-4 h-4" />
             </Link>
-          </div>
+          </RevealOnScroll>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredSpecialists.map((person) => (
-              <div
+              <StaggerItem
                 key={person.id}
-                className="bg-[#F3EDE4] border border-[#171512]/15 flex flex-col justify-between group"
+                className="bg-[#F3EDE4] border border-[#171512]/15 hover:border-[#C7A77B] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group"
               >
                 <div>
                   <div className="relative h-80 w-full overflow-hidden">
@@ -530,15 +555,15 @@ export default function HomePage() {
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* SECTION F: LUXURY GALLERY PREVIEW */}
       <section className="py-24 lg:py-32 px-5 sm:px-8 max-w-[1360px] mx-auto space-y-14">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+        <RevealOnScroll className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <div className="space-y-3">
             <p className="text-xs uppercase tracking-[0.24em] text-[#171512]/70">
               06 · Visual Portfolio
@@ -549,89 +574,96 @@ export default function HomePage() {
           </div>
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#171512] text-[#F3EDE4] text-xs uppercase tracking-[0.18em] hover:bg-[#C7A77B] hover:text-[#171512] transition-colors whitespace-nowrap"
+            className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#171512] text-[#F3EDE4] text-xs uppercase tracking-[0.18em] hover:bg-[#C7A77B] hover:text-[#171512] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
           >
             <span>Enter Full Gallery & Lightbox</span>
             <ArrowUpRight className="w-4 h-4" />
           </Link>
-        </div>
+        </RevealOnScroll>
 
         {/* Asymmetric Editorial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          <Link
-            href="/gallery"
-            className="md:col-span-7 relative h-[380px] sm:h-[460px] group overflow-hidden border border-[#171512]/15"
-          >
-            <LuxuryImage
-              src={galleryPreview[0].image}
-              alt={galleryPreview[0].title}
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#171512]/85 via-transparent to-transparent flex items-end p-7">
-              <div className="text-[#F3EDE4]">
-                <p className="text-xs uppercase tracking-[0.18em] text-[#C7A77B]">
-                  {galleryPreview[0].category}
-                </p>
-                <h3 className="font-serif-editorial text-2xl sm:text-3xl mt-1">
-                  {galleryPreview[0].title}
-                </h3>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href="/gallery"
-            className="md:col-span-5 relative h-[380px] sm:h-[460px] group overflow-hidden border border-[#171512]/15"
-          >
-            <LuxuryImage
-              src={galleryPreview[1].image}
-              alt={galleryPreview[1].title}
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#171512]/85 via-transparent to-transparent flex items-end p-7">
-              <div className="text-[#F3EDE4]">
-                <p className="text-xs uppercase tracking-[0.18em] text-[#C7A77B]">
-                  {galleryPreview[1].category}
-                </p>
-                <h3 className="font-serif-editorial text-2xl sm:text-3xl mt-1">
-                  {galleryPreview[1].title}
-                </h3>
-              </div>
-            </div>
-          </Link>
-
-          {galleryPreview.slice(2, 5).map((item) => (
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <StaggerItem className="md:col-span-7">
             <Link
-              key={item.id}
               href="/gallery"
-              className="md:col-span-4 relative h-[320px] group overflow-hidden border border-[#171512]/15"
+              className="block relative h-[380px] sm:h-[460px] group overflow-hidden border border-[#171512]/15"
             >
               <LuxuryImage
-                src={item.image}
-                alt={item.title}
+                src={galleryPreview[0].image}
+                alt={galleryPreview[0].title}
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#171512]/85 via-transparent to-transparent flex items-end p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#171512]/85 via-transparent to-transparent flex items-end p-7">
                 <div className="text-[#F3EDE4]">
                   <p className="text-xs uppercase tracking-[0.18em] text-[#C7A77B]">
-                    {item.category}
+                    {galleryPreview[0].category}
                   </p>
-                  <h3 className="font-serif-editorial text-2xl mt-1">{item.title}</h3>
+                  <h3 className="font-serif-editorial text-2xl sm:text-3xl mt-1">
+                    {galleryPreview[0].title}
+                  </h3>
                 </div>
               </div>
             </Link>
+          </StaggerItem>
+
+          <StaggerItem className="md:col-span-5">
+            <Link
+              href="/gallery"
+              className="block relative h-[380px] sm:h-[460px] group overflow-hidden border border-[#171512]/15"
+            >
+              <LuxuryImage
+                src={galleryPreview[1].image}
+                alt={galleryPreview[1].title}
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#171512]/85 via-transparent to-transparent flex items-end p-7">
+                <div className="text-[#F3EDE4]">
+                  <p className="text-xs uppercase tracking-[0.18em] text-[#C7A77B]">
+                    {galleryPreview[1].category}
+                  </p>
+                  <h3 className="font-serif-editorial text-2xl sm:text-3xl mt-1">
+                    {galleryPreview[1].title}
+                  </h3>
+                </div>
+              </div>
+            </Link>
+          </StaggerItem>
+
+          {galleryPreview.slice(2, 5).map((item) => (
+            <StaggerItem key={item.id} className="md:col-span-4">
+              <Link
+                href="/gallery"
+                className="block relative h-[320px] group overflow-hidden border border-[#171512]/15"
+              >
+                <LuxuryImage
+                  src={item.image}
+                  alt={item.title}
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#171512]/85 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-[#F3EDE4]">
+                    <p className="text-xs uppercase tracking-[0.18em] text-[#C7A77B]">
+                      {item.category}
+                    </p>
+                    <h3 className="font-serif-editorial text-2xl mt-1">{item.title}</h3>
+                  </div>
+                </div>
+              </Link>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </section>
 
       {/* SECTION G: TESTIMONIALS */}
       <section className="py-20 lg:py-28 px-5 sm:px-8 max-w-[1360px] mx-auto">
-        <TestimonialCarousel />
+        <RevealOnScroll>
+          <TestimonialCarousel />
+        </RevealOnScroll>
       </section>
 
       {/* SECTION H & I: INSTAGRAM / SOCIAL EDITORIAL DISPATCH */}
       <section className="py-20 px-5 sm:px-8 max-w-[1360px] mx-auto border-t border-[#171512]/15">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+        <RevealOnScroll className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-[#171512]/65">
               07 · Social Journal & Daily Moments
@@ -647,9 +679,9 @@ export default function HomePage() {
             <span>Read The ÉLORA Beauty Journal</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
-        </div>
+        </RevealOnScroll>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {[
             {
               img: '/images/hero-atelier.jpg',
@@ -672,27 +704,28 @@ export default function HomePage() {
               tag: 'Nail Artistry',
             },
           ].map((post, i) => (
-            <Link
-              key={i}
-              href="/gallery"
-              className="group block border border-[#171512]/15 bg-[#F3EDE4] overflow-hidden"
-            >
-              <div className="relative h-56 sm:h-64 w-full overflow-hidden">
-                <LuxuryImage
-                  src={post.img}
-                  alt={post.caption}
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-4 space-y-1">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-[#C7A77B]">
-                  {post.tag} · @elora.atelier
-                </p>
-                <p className="text-xs text-[#171512]/80 line-clamp-2">{post.caption}</p>
-              </div>
-            </Link>
+            <StaggerItem key={i}>
+              <Link
+                href="/gallery"
+                className="group block border border-[#171512]/15 bg-[#F3EDE4] hover:border-[#C7A77B] transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              >
+                <div className="relative h-56 sm:h-64 w-full overflow-hidden">
+                  <LuxuryImage
+                    src={post.img}
+                    alt={post.caption}
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-4 space-y-1">
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-[#C7A77B]">
+                    {post.tag} · @elora.atelier
+                  </p>
+                  <p className="text-xs text-[#171512]/80 line-clamp-2">{post.caption}</p>
+                </div>
+              </Link>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </section>
     </div>
   );

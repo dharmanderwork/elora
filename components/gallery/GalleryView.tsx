@@ -109,11 +109,16 @@ export default function GalleryView() {
             <motion.div
               key={item.id}
               layout
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 24, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.12 }}
               exit={{ opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="group border border-[#171512]/15 bg-[#F3EDE4] overflow-hidden flex flex-col justify-between"
+              transition={{
+                duration: 0.55,
+                delay: (idx % 3) * 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="group border border-[#171512]/15 bg-[#F3EDE4] hover:border-[#C7A77B] transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col justify-between"
             >
               <button
                 type="button"

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Calendar, ArrowRight } from 'lucide-react';
 import ServicesCatalog from '@/components/services/ServicesCatalog';
+import { RevealOnScroll } from '@/components/ui/MotionPrimitives';
 import { BRAND_INFO } from '@/lib/elora-data';
 
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export default function ServicesPage() {
     <div className="bg-[#F3EDE4] text-[#171512]">
       {/* Page Hero */}
       <section className="bg-[#171512] text-[#F3EDE4] pt-36 pb-20 lg:pt-44 lg:pb-24 border-b border-[#C7A77B]/30">
-        <div className="max-w-[1360px] mx-auto px-5 sm:px-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+        <RevealOnScroll className="max-w-[1360px] mx-auto px-5 sm:px-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div className="max-w-3xl space-y-4">
             <p className="text-xs uppercase tracking-[0.26em] text-[#C7A77B]">
               Curated Service Discovery
@@ -35,20 +36,20 @@ export default function ServicesPage() {
           <div className="flex flex-wrap items-center gap-4 shrink-0">
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#C7A77B]/50 text-[#F3EDE4] text-xs uppercase tracking-[0.18em] hover:border-[#C7A77B] hover:text-[#C7A77B] transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#C7A77B]/50 text-[#F3EDE4] text-xs uppercase tracking-[0.18em] hover:border-[#C7A77B] hover:text-[#C7A77B] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
             >
               <span>View Full Price List</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <Link
               href="/book"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.18em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.18em] font-medium hover:bg-[#F3EDE4] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Book Appointment</span>
             </Link>
           </div>
-        </div>
+        </RevealOnScroll>
       </section>
 
       {/* Catalog Section */}
@@ -63,7 +64,7 @@ export default function ServicesPage() {
           <ServicesCatalog />
         </Suspense>
 
-        <div className="mt-16 p-6 border border-[#171512]/15 bg-[#171512]/[0.03] text-xs text-[#171512]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <RevealOnScroll className="mt-16 p-6 border border-[#171512]/15 bg-[#171512]/[0.03] text-xs text-[#171512]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <p>{BRAND_INFO.demoNotice}</p>
           <Link
             href="/faq"
@@ -71,7 +72,7 @@ export default function ServicesPage() {
           >
             Read Service & Hygiene FAQs →
           </Link>
-        </div>
+        </RevealOnScroll>
       </section>
     </div>
   );

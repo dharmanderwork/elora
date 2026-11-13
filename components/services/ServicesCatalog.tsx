@@ -78,39 +78,56 @@ export default function ServicesCatalog() {
       </div>
 
       {/* Category Editorial Subheader */}
-      {activeCategoryMeta && (
-        <div className="p-6 sm:p-8 bg-[#171512] text-[#F3EDE4] border border-[#C7A77B]/30 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-[#C7A77B]">
-              {activeCategoryMeta.label}
-            </p>
-            <p className="font-serif-editorial text-2xl sm:text-3xl mt-1 text-[#F3EDE4]">
-              {activeCategoryMeta.tagline}
-            </p>
-          </div>
-          <Link
-            href={`/book?category=${encodeURIComponent(activeCategoryMeta.id)}`}
-            className="px-5 py-3 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.18em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap shrink-0"
+      <AnimatePresence mode="wait">
+        {activeCategoryMeta && (
+          <motion.div
+            key={activeCategoryMeta.id}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="p-6 sm:p-8 bg-[#171512] text-[#F3EDE4] border border-[#C7A77B]/30 flex flex-col sm:flex-row sm:items-center justify-between gap-6"
           >
-            Book {activeCategoryMeta.id} Ritual
-          </Link>
-        </div>
-      )}
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-[#C7A77B]">
+                {activeCategoryMeta.label}
+              </p>
+              <p className="font-serif-editorial text-2xl sm:text-3xl mt-1 text-[#F3EDE4]">
+                {activeCategoryMeta.tagline}
+              </p>
+            </div>
+            <Link
+              href={`/book?category=${encodeURIComponent(activeCategoryMeta.id)}`}
+              className="px-5 py-3 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.18em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap shrink-0"
+            >
+              Book {activeCategoryMeta.id} Ritual
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Services Grid */}
+      {/* Services Grid with Scroll & Category Stagger */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeCategory}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {filteredServices.map((service) => (
-            <article
+          {filteredServices.map((service, idx) => (
+            <motion.article
               key={service.id}
-              className="border border-[#171512]/15 bg-[#F3EDE4] hover:border-[#C7A77B] transition-all duration-300 flex flex-col justify-between group"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.12 }}
+              transition={{
+                duration: 0.55,
+                delay: (idx % 3) * 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="border border-[#171512]/15 bg-[#F3EDE4] hover:border-[#C7A77B] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group"
             >
               <div>
                 <Link
@@ -125,7 +142,6 @@ export default function ServicesCatalog() {
                 </Link>
 
                 <div className="p-7 space-y-3.5">
-                  {/* Unboxed clean metadata */}
                   <div className="flex items-center justify-between text-xs text-[#171512]/70 uppercase tracking-[0.16em]">
                     <span>{service.category}</span>
                     <span className="inline-flex items-center gap-1.5 tabular-nums">
@@ -173,7 +189,7 @@ export default function ServicesCatalog() {
                   </Link>
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </motion.div>
       </AnimatePresence>

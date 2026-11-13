@@ -10,6 +10,7 @@ import {
   Compass,
 } from 'lucide-react';
 import ContactForm from '@/components/contact/ContactForm';
+import { RevealOnScroll } from '@/components/ui/MotionPrimitives';
 import { BRAND_INFO } from '@/lib/elora-data';
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function ContactPage() {
     <div className="bg-[#F3EDE4] text-[#171512]">
       {/* Page Hero */}
       <section className="bg-[#171512] text-[#F3EDE4] pt-36 pb-20 lg:pt-44 lg:pb-24 border-b border-[#C7A77B]/30">
-        <div className="max-w-[1360px] mx-auto px-5 sm:px-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+        <RevealOnScroll className="max-w-[1360px] mx-auto px-5 sm:px-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div className="space-y-4 max-w-3xl">
             <p className="text-xs uppercase tracking-[0.26em] text-[#C7A77B]">
               Private Concierge Desk
@@ -43,19 +44,19 @@ export default function ContactPage() {
             href={BRAND_INFO.contact.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap shrink-0"
+            className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap shrink-0"
           >
             <MessageCircle className="w-4 h-4" />
             <span>Message on WhatsApp</span>
           </a>
-        </div>
+        </RevealOnScroll>
       </section>
 
       {/* Contact Details + Validated Form */}
       <section className="py-20 lg:py-28 px-5 sm:px-8 max-w-[1360px] mx-auto space-y-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left: Address, Phone, Hours, Socials */}
-          <div className="lg:col-span-5 space-y-8">
+          <RevealOnScroll className="lg:col-span-5 space-y-8">
             <div className="border border-[#171512]/15 p-8 bg-[#171512] text-[#F3EDE4] space-y-6">
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] text-[#C7A77B]">
@@ -129,10 +130,10 @@ export default function ContactPage() {
             <div className="p-5 border border-[#171512]/15 text-xs text-[#171512]/70 leading-relaxed">
               {BRAND_INFO.demoNotice}
             </div>
-          </div>
+          </RevealOnScroll>
 
           {/* Right: Contact Form */}
-          <div className="lg:col-span-7 border border-[#171512]/15 p-8 sm:p-12 bg-[#F3EDE4]">
+          <RevealOnScroll delay={0.12} className="lg:col-span-7 border border-[#171512]/15 p-8 sm:p-12 bg-[#F3EDE4]">
             <div className="mb-8 space-y-2">
               <p className="text-xs uppercase tracking-[0.2em] text-[#C7A77B] font-medium">
                 Direct Dispatch
@@ -146,11 +147,11 @@ export default function ContactPage() {
             </div>
 
             <ContactForm />
-          </div>
+          </RevealOnScroll>
         </div>
 
         {/* Architectural Map Embed Placeholder */}
-        <div className="border border-[#171512]/20 bg-[#171512] text-[#F3EDE4] p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <RevealOnScroll className="border border-[#171512]/20 bg-[#171512] text-[#F3EDE4] p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#C7A77B]">
               <Compass className="w-4 h-4" />
@@ -176,7 +177,7 @@ export default function ContactPage() {
               40.7685° N, 73.9693° W · Demonstration Pin
             </span>
           </div>
-        </div>
+        </RevealOnScroll>
       </section>
     </div>
   );

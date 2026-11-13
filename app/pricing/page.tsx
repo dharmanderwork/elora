@@ -3,6 +3,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Calendar, Check, ArrowRight, Info } from 'lucide-react';
 import {
+  RevealOnScroll,
+  StaggerContainer,
+  StaggerItem,
+} from '@/components/ui/MotionPrimitives';
+import {
   SERVICE_CATEGORIES,
   SERVICES_DATA,
   PRICING_PACKAGES,
@@ -20,7 +25,7 @@ export default function PricingPage() {
     <div className="bg-[#F3EDE4] text-[#171512]">
       {/* Page Hero */}
       <section className="bg-[#171512] text-[#F3EDE4] pt-36 pb-20 lg:pt-44 lg:pb-24 border-b border-[#C7A77B]/30">
-        <div className="max-w-[1360px] mx-auto px-5 sm:px-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+        <RevealOnScroll className="max-w-[1360px] mx-auto px-5 sm:px-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div className="space-y-4 max-w-3xl">
             <p className="text-xs uppercase tracking-[0.26em] text-[#C7A77B]">
               Atelier Index & Investment Guide
@@ -38,12 +43,12 @@ export default function PricingPage() {
 
           <Link
             href="/book"
-            className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-colors whitespace-nowrap shrink-0"
+            className="inline-flex items-center gap-2.5 px-7 py-4 bg-[#C7A77B] text-[#171512] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#F3EDE4] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap shrink-0"
           >
             <Calendar className="w-4 h-4" />
             <span>Reserve an Appointment</span>
           </Link>
-        </div>
+        </RevealOnScroll>
       </section>
 
       {/* Clear Demonstration Pricing Notice */}
@@ -61,7 +66,7 @@ export default function PricingPage() {
         {SERVICE_CATEGORIES.map((cat, idx) => {
           const categoryServices = SERVICES_DATA.filter((s) => s.category === cat.id);
           return (
-            <div key={cat.id} className="space-y-8">
+            <RevealOnScroll key={cat.id} className="space-y-8">
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#171512]/20 pb-5">
                 <div>
                   <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#C7A77B] tabular-nums">
@@ -78,7 +83,7 @@ export default function PricingPage() {
                 {categoryServices.map((service) => (
                   <div
                     key={service.id}
-                    className="py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[#171512]/[0.02] px-3 transition-colors"
+                    className="py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[#171512]/[0.03] px-3 transition-colors"
                   >
                     <div className="space-y-1 max-w-2xl">
                       <div className="flex flex-wrap items-center gap-3">
@@ -125,7 +130,7 @@ export default function PricingPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </RevealOnScroll>
           );
         })}
       </section>
@@ -133,20 +138,20 @@ export default function PricingPage() {
       {/* Bridal Packages, Signature Day Packages & Memberships */}
       <section className="py-24 bg-[#171512] text-[#F3EDE4] border-t border-[#C7A77B]/30">
         <div className="max-w-[1360px] mx-auto px-5 sm:px-8 space-y-14">
-          <div className="max-w-2xl space-y-3">
+          <RevealOnScroll className="max-w-2xl space-y-3">
             <p className="text-xs uppercase tracking-[0.24em] text-[#C7A77B]">
               Bespoke Curations & Privileges
             </p>
             <h2 className="font-serif-editorial text-4xl sm:text-5xl font-normal text-[#F3EDE4]">
               Bridal Couture, Day Sanctuaries & Atelier Privé Membership
             </h2>
-          </div>
+          </RevealOnScroll>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             {PRICING_PACKAGES.map((pkg) => (
-              <div
+              <StaggerItem
                 key={pkg.id}
-                className="border border-[#C7A77B]/35 bg-[#F3EDE4]/[0.03] p-8 sm:p-10 flex flex-col justify-between space-y-8"
+                className="border border-[#C7A77B]/35 bg-[#F3EDE4]/[0.03] hover:border-[#C7A77B] transition-all duration-300 hover:-translate-y-1 p-8 sm:p-10 flex flex-col justify-between space-y-8"
               >
                 <div className="space-y-5">
                   <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-[#C7A77B]">
@@ -189,9 +194,9 @@ export default function PricingPage() {
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
           <p className="text-xs text-[#F3EDE4]/55 text-center pt-4">{BRAND_INFO.demoNotice}</p>
         </div>
