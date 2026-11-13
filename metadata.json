@@ -1,0 +1,6 @@
+{
+  "name": "ÉLORA Beauty Atelier — Luxury Salon & Spa Experience",
+  "description": "Where Beauty Becomes an Experience. Discover bespoke hair artistry, cellular skin rituals, haute couture bridal beauty, nail artistry, and holistic spa wellness at ÉLORA Beauty Atelier.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

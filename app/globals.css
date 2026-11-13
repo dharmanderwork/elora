@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-espresso: #171512;
+    --color-ivory: #F3EDE4;
+    --color-gold: #C7A77B;
+  }
+
+  html {
+    background-color: #F3EDE4;
+    color: #171512;
+    scroll-behavior: smooth;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  body {
+    background-color: #F3EDE4;
+    color: #171512;
+    overflow-x: hidden;
+    selection-background-color: #C7A77B;
+    selection-color: #171512;
+  }
+
+  ::selection {
+    background-color: #C7A77B;
+    color: #171512;
+  }
+}
+
+.font-serif-editorial {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.font-sans-clean {
+  font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
